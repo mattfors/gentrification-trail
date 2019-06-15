@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "gentrail-common": [
+        "dist/gentrail-common"
+      ],
+      "gentrail-common/*": [
+        "dist/gentrail-common/*"
+      ]
+    }
   }
 }
