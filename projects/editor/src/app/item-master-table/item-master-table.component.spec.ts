@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GentrailCommonComponent } from './gentrail-common.component';
+import { ItemMasterTableComponent } from './item-master-table.component';
 
-describe('GentrailCommonComponent', () => {
-  let component: GentrailCommonComponent;
-  let fixture: ComponentFixture<GentrailCommonComponent>;
+describe('ItemMasterTableComponent', () => {
+  let component: ItemMasterTableComponent;
+  let fixture: ComponentFixture<ItemMasterTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GentrailCommonComponent ]
+      declarations: [ ItemMasterTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GentrailCommonComponent);
+    fixture = TestBed.createComponent(ItemMasterTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

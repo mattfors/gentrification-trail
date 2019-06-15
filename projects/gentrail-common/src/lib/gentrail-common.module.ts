@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
-import { GentrailCommonComponent } from './gentrail-common.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../../../editor/src/environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [GentrailCommonComponent],
+  declarations: [],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    CommonModule
   ],
-  exports: [GentrailCommonComponent]
+  providers: [AngularFirestore],
+  exports: []
 })
 export class GentrailCommonModule { }

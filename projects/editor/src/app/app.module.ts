@@ -3,18 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatTableModule } from '@angular/material';
 import { GentrailCommonModule } from '../../../gentrail-common/src/lib/gentrail-common.module';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { ItemMasterTableComponent } from './item-master-table/item-master-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ItemMasterTableComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     GentrailCommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
