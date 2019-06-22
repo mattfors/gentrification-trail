@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ItemMaster } from '../../../gentrail-common/src/lib/model/item-master';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'editor';
+
+  item: ItemMaster;
 }

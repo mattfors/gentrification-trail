@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ItemMaster } from '../../../../gentrail-common/src/lib/model/item-master';
 import { ItemMasterService } from '../../../../gentrail-common/src/lib/services/item-master.service';
@@ -7,7 +7,7 @@ import { DataSource } from '@angular/cdk/table';
 @Component({
   selector: 'app-item-master-table',
   template: `
-    <mat-table [dataSource]="dataSource">
+    <mat-table [dataSource]="dataSource" class="item-master-table-container">
       <ng-container matColumnDef="itemId">
         <mat-header-cell *matHeaderCellDef> Item Id </mat-header-cell>
         <mat-cell *matCellDef="let item"> {{item.itemId}} </mat-cell>
@@ -20,26 +20,31 @@ import { DataSource } from '@angular/cdk/table';
         <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
         <mat-cell *matCellDef="let item"> {{item.description}} </mat-cell>
       </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)"></mat-row>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "onRowClicked(row)"></mat-row>
     </mat-table>
   `,
-  styles: []
+  styles: [`
+    .item-master-table-container {
+      overflow-x: scroll;
+      height: 400px;
+    }
+  `]
 })
 export class ItemMasterTableComponent implements OnInit {
 
   readonly dataSource = new ItemMasterDataSource(this.itemMaster);
   readonly displayedColumns = ['itemId', 'shortName', 'description'];
-  private itemMaterClick: EventEmitter<ItemMaster> = new EventEmitter<ItemMaster>();
+
+  @Output() itemMasterSelected: EventEmitter<ItemMaster> = new EventEmitter<ItemMaster>();
 
   constructor(private itemMaster: ItemMasterService) { }
 
   ngOnInit() {
-    this.itemMaterClick = new EventEmitter<ItemMaster>();
   }
 
-  rowClicked(row: ItemMaster): void {
-    this.itemMaterClick.emit(row);
+  onRowClicked(row: ItemMaster): void {
+    this.itemMasterSelected.emit(row);
   }
 
 }

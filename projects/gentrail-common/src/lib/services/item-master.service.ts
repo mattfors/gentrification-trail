@@ -23,6 +23,14 @@ export class ItemMasterService {
   }
 
   create(itemMaster: ItemMaster) {
-    return this.firestore.collection<ItemMaster>('item-master').add(itemMaster);
+    this.firestore.collection<ItemMaster>('item-master').add(itemMaster);
+  }
+
+  delete(itemMaster: ItemMaster) {
+    this.firestore.collection('item-master').doc(itemMaster.itemId).delete();
+  }
+
+  update(itemMaster: ItemMaster) {
+    this.firestore.collection('item-master').doc(itemMaster.itemId).set(itemMaster);
   }
 }
